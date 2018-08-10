@@ -1,0 +1,15 @@
+.pinkDiv{
+    width:50%;
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1500px) {
+    .pinkDiv{
+        width:58%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .pinkDiv{
+        width:70%;
+    }
+}

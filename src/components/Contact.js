@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CardContact from './CardContact'
+import '../css/Contact.css';
 
 const styles={
     card:{
@@ -7,7 +8,11 @@ const styles={
     },
     pinkDiv:{
         height: window.innerWidth > 500 ? 70 : 50,
-        width: window.innerWidth > 500 ? '50%' : '70%',
+        background: '#ffcccc',
+        boxShadow: '0 20px 20px 10px grey',
+    },
+    pinkDiv2:{
+        height: window.innerWidth > 500 ? 55 : 45,
         background: '#ffcccc',
         boxShadow: '0 20px 20px 10px grey',
     },
@@ -28,9 +33,9 @@ class Contact extends Component {
     render() {
         return (
             <div align="center" dir="rtl" style={styles.card}>
-                <div style={{...styles.pinkDiv, ...styles.paddingTop}}></div>
+                <div style={{...styles.pinkDiv, ...styles.paddingTop}} className="pinkDiv"></div>
                 <CardContact/>
-                <div style={styles.pinkDiv}></div>
+                <div style={styles.pinkDiv2} className="pinkDiv"></div>
                 <br/>
                 <div style={styles.greyDiv}></div>
             </div>
