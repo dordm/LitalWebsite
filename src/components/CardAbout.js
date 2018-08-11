@@ -60,7 +60,7 @@ function CardAbout(props) {
                 <div className="title2">
                     ליטל ברני
                     <br/>
-                    Graphic Design
+                    Graphic Designer
                 </div>
             </Card>
         </div>

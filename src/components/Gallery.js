@@ -16,13 +16,13 @@ class Gallery extends Component {
 
     onImageHover(img){
         img.target.src = images.find((image) =>
-            image.title === img.target.alt
+            image.title === img.target.alt && image.category
         ).hoverImage;;
     }
 
     onImageOut(img){
         img.target.src = images.find((image) =>
-            image.title === img.target.alt
+            image.title === img.target.alt && image.category
         ).img;
     }
 

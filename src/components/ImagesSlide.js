@@ -57,7 +57,7 @@ class ImagesSlide extends Component {
 
     onImageHover(img){
         img.target.src = images.find((image) =>
-            image.title === img.target.alt
+            image.title === img.target.alt && image.category
         ).hoverImage;;
         this.setState({
             imagesHover:true
@@ -66,7 +66,7 @@ class ImagesSlide extends Component {
 
     onImageOut(img){
         img.target.src = images.find((image) =>
-             image.title === img.target.alt
+             image.title === img.target.alt && image.category
         ).img;
         this.setState({
             imagesHover:false
