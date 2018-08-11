@@ -4,6 +4,7 @@ import Gallery from './Gallery'
 import Contact from './Contact'
 import Navbar from './NavBar'
 import BottomNav from './BottomNav'
+import CategoryGallery from './CategoryGallery'
 import{
     BrowserRouter,
     Route
@@ -16,7 +17,8 @@ class App extends Component {
           <div>
               <Navbar/>
               <Route exact path='/' component={Home} />
-              <Route path='/gallery' component={Gallery} />
+              <Route path='/gallery/:category' component={CategoryGallery} />
+              <Route exact path='/gallery' component={Gallery} />
               <Route path='/contact' component={Contact} />
               <BottomNav/>
           </div>

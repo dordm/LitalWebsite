@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
 import '../css/ImageSlide.css';
 import images from '../js/images'
 
@@ -14,26 +13,33 @@ const styles = theme => ({
         // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
         transform: 'translateZ(0)',
     },
-    title: {
-        color: theme.palette.primary.light,
-    },
-    titleBar: {
-        background:
-            'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-    },
+
+
     imgStyle:{
         backgroundSize:'cover'
     },
 });
 
 class ImagesSlide extends Component {
+
+    constructor(props){
+        super(props);
+        this.state={
+            imagesHover: false
+        }
+    }
+
     componentDidMount(){
         var direction = true;
 
         this.interval = window.setInterval(() => {
             var grid = document.getElementsByTagName('ul')[0];
             var maxScrollLeft = grid.scrollWidth - grid.clientWidth;
-            var offsetLeft = 2;
+            var offsetLeft;
+            if(this.state.imagesHover)
+                offsetLeft = 0;
+            else
+                offsetLeft = 2;
             if(Math.ceil(grid.scrollLeft) >= maxScrollLeft)
                 direction = false;
             if(grid.scrollLeft <= 0)
@@ -49,22 +55,36 @@ class ImagesSlide extends Component {
         window.clearInterval(this.interval);
     }
 
+    onImageHover(img){
+        img.target.src = images.find((image) =>
+            image.title === img.target.alt
+        ).hoverImage;;
+        this.setState({
+            imagesHover:true
+        })
+    }
+
+    onImageOut(img){
+        img.target.src = images.find((image) =>
+             image.title === img.target.alt
+        ).img;
+        this.setState({
+            imagesHover:false
+        })
+    }
+
+    onImageClick(img){
+        window.location.href = '/gallery/' + img.target.alt;
+    }
 
     render() {
         const { classes } = this.props;
         return (
             <div className="root">
                 <GridList cellHeight={230} className={classes.gridList} cols={window.innerWidth > 500 ? 3 : 1}>
-                    {images.map(tile => (
+                    {images.filter((tile) => tile.category).map(tile => (
                         <GridListTile key={tile.img}>
-                            <img className={classes.imgStyle} src={tile.img} alt={tile.title}/>
-                            <GridListTileBar
-                                title={tile.title}
-                                classes={{
-                                    root: classes.titleBar,
-                                    title: classes.title,
-                                }}
-                            />
+                            <img className={classes.imgStyle} style={{cursor:'pointer'}} src={tile.img} alt={tile.title} onMouseOver={(event) => this.onImageHover(event)} onMouseOut={(event) => this.onImageOut(event)} onClick={(event) => this.onImageClick(event)}/>
                         </GridListTile>
                     ))}
                 </GridList>

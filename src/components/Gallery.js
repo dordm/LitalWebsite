@@ -3,26 +3,33 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
 import '../css/Gallery.css';
 import images from '../js/images'
 
-
-
 const styles = theme => ({
-    title: {
-        color: theme.palette.primary.light,
-    },
-    titleBar: {
-        background:
-            'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-    },
     imgStyle:{
         backgroundSize:'cover'
     },
 });
 
 class Gallery extends Component {
+
+    onImageHover(img){
+        img.target.src = images.find((image) =>
+            image.title === img.target.alt
+        ).hoverImage;;
+    }
+
+    onImageOut(img){
+        img.target.src = images.find((image) =>
+            image.title === img.target.alt
+        ).img;
+    }
+
+    onImageClick(img){
+        window.location.href = '/gallery/' + img.target.alt;
+    }
+
     render() {
         const { classes } = this.props;
         return (
@@ -33,16 +40,9 @@ class Gallery extends Component {
                 </div>
                 <br/>
                 <GridList spacing={20} cellHeight={230} className="gridList" cols={window.innerWidth > 500 ? 4 : 1}>
-                    {images.map(tile => (
+                    {images.filter((tile) => tile.category).map(tile => (
                         <GridListTile key={tile.img}>
-                            <img className={classes.imgStyle} src={tile.img} alt={tile.title}/>
-                            <GridListTileBar
-                                title={tile.title}
-                                classes={{
-                                    root: classes.titleBar,
-                                    title: classes.title,
-                                }}
-                            />
+                            <img style={{cursor:'pointer'}} className={classes.imgStyle} src={tile.img} alt={tile.title} onMouseOver={(event) => this.onImageHover(event)} onMouseOut={(event) => this.onImageOut(event)} onClick={(event) => this.onImageClick(event)} />
                         </GridListTile>
                     ))}
                 </GridList>
