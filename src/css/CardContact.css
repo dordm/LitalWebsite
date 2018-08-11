@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:700|Noto+Sans&subset=hebrew');
 
-
 .card {
     display: flex;
     height: 400px;
     width: 60%;
     background-color: #ffffff;
-    box-shadow: 0 0 20px 5px grey;
+    box-shadow: 0 0 20px 5px grey !important;
     border: 1px solid black;
     }
 .title{
@@ -36,6 +35,7 @@
     padding-top: -5px;
     width:120px;
     height:60px;
+    box-shadow: 0 0 20px 2px grey !important;
 }
 
 @media only screen and (min-width: 900px) and (max-width: 1500px) {

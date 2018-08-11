@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:700|Noto+Sans&subset=hebrew');
+
+.content{
+    font-family: 'Amatic SC', cursive !important;
+    font-size: 32px !important;
+    font-weight: bold !important;
+}
+
+.cardAbout {
+    display: flex;
+    width: 50%;
+    box-shadow: 0 0 20px 5px grey !important;
+    background-color: #fff;
+}
+.imgIcon{
+    width:50px;
+    height:50px;
+}
+
+.title2{
+    position: absolute;
+    top: 60vh;
+    margin-top: 50px;
+    background-color: #ff0099;
+    height: 80px;
+    width:190px;
+    right:25%;
+    margin-right: -30px;
+    font-size: 30px;
+    text-align:center;
+    color: white;
+    box-shadow: 0 0 20px 2px grey;
+    font-family: 'Amatic SC', cursive;
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1500px) {
+    .title2{
+        right:15%;
+    }
+    .cardAbout {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .title2{
+        top:40vh;
+        margin-top: 45px;
+        height:50px;
+        width:100px;
+        right:5%;
+        margin-right: -10px;
+        font-size: 20px !important;
+    }
+    .cardAbout {
+        width: 90%;
+    }
+    .content{
+        font-size: 18px !important;
+    }
+    .imgIcon{
+        width:28px;
+        height:28px;
+    }
+}

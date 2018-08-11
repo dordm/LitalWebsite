@@ -1,0 +1,21 @@
+
+.root {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: hidden;
+    /*background-color: theme.palette.background.paper,*/
+    width:50%;
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1500px) {
+    .root {
+        width:70%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .root {
+        width:90%;
+    }
+}

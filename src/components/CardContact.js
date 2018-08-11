@@ -13,7 +13,7 @@ import '../css/CardContact.css';
 import Button from '@material-ui/core/Button';
 import classNames from 'classnames';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import CustomizedSnackbar, {showSnackbar} from './CustomizedSnackbar'
+import CustomizedSnackbar, {showSnackbar} from './CustomizedSnackbar';
 
 const theme = createMuiTheme({
     direction: 'rtl',
@@ -43,9 +43,9 @@ const styles = ({
         textAlign:'right'
     },
     btnSend: {
-        background: 'linear-gradient(45deg, #e29cb1 30%, #ffcccc 70%)',
+        background: 'linear-gradient(45deg, #ff00cc 30%, #cc66cc 70%)',
         '&:hover': {
-            background: 'linear-gradient(45deg, #d77592 30%, #ff9999 70%)',
+            background: 'linear-gradient(45deg, #cc00a3 30%, #bf40bf 70%)',
         },
     },
     progress:{

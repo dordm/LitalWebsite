@@ -4,59 +4,11 @@ import { withStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-
-const images = [
-    {
-        img: require('../images/image1.jpg'),
-        title: '',
-        author: 'Lital Berni',
-    },
-    {
-        img: require('../images/image2.jpg'),
-        title: '',
-        author: 'Lital Berni',
-    },
-    {
-        img: require('../images/image3.jpg'),
-        title: '',
-        author: 'Lital Berni',
-    },
-    {
-        img: require('../images/image4.jpg'),
-        title: '',
-        author: 'Lital Berni',
-    },
-    {
-        img: require('../images/image5.jpg'),
-        title: '',
-        author: 'Lital Berni',
-    },
-    {
-        img: require('../images/image6.jpg'),
-        title: '',
-        author: 'Lital Berni',
-    },
-    {
-        img: require('../images/image7.jpg'),
-        title: '',
-        author: 'Lital Berni',
-    },
-    {
-        img: require('../images/image8.jpg'),
-        title: '',
-        author: 'Lital Berni',
-    },
- ];
+import '../css/ImageSlide.css';
+import images from '../js/images'
 
 const styles = theme => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
-        width: window.innerWidth > 500 ? '50%' : '90%',
-    },
+
     gridList: {
         flexWrap: 'nowrap',
         // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
@@ -100,10 +52,9 @@ class ImagesSlide extends Component {
 
     render() {
         const { classes } = this.props;
-
         return (
-            <div className={classes.root}>
-                <GridList cellHeight={window.innerWidth > 500 && window.innerWidth < 1500 ? 160 : 230} className={classes.gridList} cols={window.innerWidth > 500 ? 3 : 1}>
+            <div className="root">
+                <GridList cellHeight={230} className={classes.gridList} cols={window.innerWidth > 500 ? 3 : 1}>
                     {images.map(tile => (
                         <GridListTile key={tile.img}>
                             <img className={classes.imgStyle} src={tile.img} alt={tile.title}/>
